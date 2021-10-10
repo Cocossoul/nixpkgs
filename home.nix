@@ -47,5 +47,9 @@
    '';
   };
 
+  imports = [
+    ./i3.nix
+  ];
+
   home.stateVersion = "21.05";
 }
