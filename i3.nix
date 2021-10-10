@@ -35,6 +35,9 @@ in {
         # Close window
         "${mod}+Shift+a" = "kill";
 
+        # Tabbed mode
+        "${mod}+Shift+z" = "workspace_layout tabbed";
+
         # Shortcut mode
         "${mod}+Shift+d" = "mode shortcut";
 
@@ -61,6 +64,7 @@ in {
         "i" = "exec google-chrome-stable";
         "o" = "exec firefox";
         "t" = "exec thunderbird";
+        "Shift+s" = "exec 'shutdown now'";
 
         # back to normal: Enter or Escape
         "Return" = "mode default";
