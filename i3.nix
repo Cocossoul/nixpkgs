@@ -57,14 +57,14 @@ in {
 
       # Set shortcuts
       modes.shortcut = {
-        "s" = "exec \"google-chrome-stable --app='https://open.spotify.com/'\"";
-        "d" = "exec \"google-chrome-stable --app='https://discord.com/app'\"";
+        "s" = "exec google-chrome-stable --app='https://open.spotify.com/'";
+        "d" = "exec google-chrome-stable --app='https://discord.com/app'";
         "f" = "exec nautilus";
-        "p" = "exec 'google-chrome-stable -incognito'";
+        "p" = "exec google-chrome-stable -incognito";
         "i" = "exec google-chrome-stable";
         "o" = "exec firefox";
         "t" = "exec thunderbird";
-        "Shift+s" = "exec 'shutdown now'";
+        "Shift+s" = "exec sh -c 'shutdown now'";
 
         # back to normal: Enter or Escape
         "Return" = "mode default";
@@ -72,12 +72,12 @@ in {
       };
 
       # i3bar config
-      bars = [
-        {
-          position = "top";
-          statusCommand = "${pkgs.polybar}/bin/polybar top";
-        }
-      ];
+      #bars = [
+      #  {
+      #    position = "top";
+      #    statusCommand = "${pkgs.polybar}/bin/polybar top";
+      #  }
+      #];
 
       startup = [
         {
