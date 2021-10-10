@@ -72,12 +72,12 @@ in {
       };
 
       # i3bar config
-      #bars = [
+      bars = [
       #  {
       #    position = "top";
       #    statusCommand = "${pkgs.polybar}/bin/polybar top";
       #  }
-      #];
+      ];
 
       startup = [
         {
