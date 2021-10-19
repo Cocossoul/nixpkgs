@@ -17,7 +17,8 @@ in {
     config = {
       modifier = mod;
 
-      fonts = [ "pango 12" "FontAwesome 12"];
+      fonts = [ "monospace 12" "FontAwesome 12"];
+      window.hideEdgeBorders = "both";
 
       keybindings = lib.mkOptionDefault {
         # DMenu
@@ -121,12 +122,12 @@ in {
         module-margin-left = 1;
         module-margin-right = 2;
 
-        font-0 = "Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular";
-        font-1 = "Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid";
-        font-2 = "Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular";
-        font-3 = "fixed:pixelsize=13;1";
-        font-4 = "unifont:fontformat=truetype:size=8:antialias=false;0";
-        font-5 = "siji:pixelsize=13;1";
+        font-0 = "siji:pixelsize=13;1";
+        font-1 = "Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular";
+        font-2 = "Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid";
+        font-3 = "Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular";
+        font-4 = "fixed:pixelsize=13;1";
+        font-5 = "unifont:fontformat=truetype:size=8:antialias=false;0";
 
         modules-left = "bspwm i3";
         modules-center = "xwindow";
