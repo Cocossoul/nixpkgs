@@ -49,6 +49,7 @@
 
   imports = [
     ./i3.nix
+    ./picom.nix
   ];
 
   home.stateVersion = "21.05";
