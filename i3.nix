@@ -66,6 +66,7 @@ in {
         "o" = "exec firefox";
         "t" = "exec thunderbird";
         "Shift+s" = "exec sh -c 'shutdown now'";
+        "Shift+h" = "exec sh -c 'systemctl hibernate'";
 
         # back to normal: Enter or Escape
         "Return" = "mode default";
