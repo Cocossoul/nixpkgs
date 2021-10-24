@@ -36,18 +36,53 @@ in {
         # Close window
         "${mod}+Shift+a" = "kill";
 
-        # Tabbed mode
-        "${mod}+Shift+z" = "workspace_layout tabbed";
+        # Move around
+        "${mod}+Left" = "focus left";
+        "${mod}+Down" = "focus down";
+        "${mod}+Up" = "focus up";
+        "${mod}+Right" = "focus right";
+
+        # move focused window
+        "${mod}+Shift+Left" = "move left";
+        "${mod}+Shift+Down" = "move down";
+        "${mod}+Shift+Up" = "move up";
+        "${mod}+Shift+Right" = "move right";
+
+        # splits
+        "${mod}+h" = "split h";
+        "${mod}+v" = "split v";
+
+        # toggle fullscreen mode
+        "${mod}+f" = "fullscreen toggle";
+
+        # container layouts
+        "${mod}+s" = "layout stacking";
+        "${mod}+z" = "layout tabbed";
+        "${mod}+e" = "layout toggle split";
+
+        # toggle tiling / floating
+        "${mod}+Shift+space" = "floating toggle";
+
+        # change focus between tiling / floating windows
+        "${mod}+space" = "focus mode_toggle";
+
+        # focus the parent container
+        "${mod}+q" = "focus parent";
+
+        # Resize mode
+        "${mod}+r" = "focus resize";
 
         # Shortcut mode
         "${mod}+Shift+d" = "mode shortcut";
 
-        # Logout -> does not prompt ?
+        # Logout
         "${mod}+Shift+e" = "exec \"i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'\"";
 
         # Screen brightness controls
         "XF86MonBrightnessUp" = "exec sh -c \"${pkgs.light}/bin/light -A 5\""; # increase screen brightness
         "XF86MonBrightnessDown" = "exec sh -c \"${pkgs.light}/bin/light -U 5\""; # decrease screen brightness
+
+        # Audio controls
         "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +10%";
         "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -10%";
         "XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
@@ -60,21 +95,33 @@ in {
         outer = 1;
       };
 
-      # Set shortcuts
-      modes.shortcut = {
-        "s" = "exec google-chrome-stable --app='https://open.spotify.com/'";
-        "d" = "exec google-chrome-stable --app='https://discord.com/app'";
-        "f" = "exec nautilus";
-        "p" = "exec google-chrome-stable -incognito";
-        "i" = "exec google-chrome-stable";
-        "o" = "exec firefox";
-        "t" = "exec thunderbird";
-        "Shift+s" = "exec sh -c 'shutdown now'";
-        "Shift+h" = "exec sh -c 'i3-msg \"mode default\" && systemctl hibernate'";
+      # Set modes
+      modes = {
+        shortcut = {
+          "s" = "exec google-chrome-stable --app='https://open.spotify.com/'";
+          "d" = "exec google-chrome-stable --app='https://discord.com/app'";
+          "f" = "exec nautilus";
+          "p" = "exec google-chrome-stable -incognito";
+          "i" = "exec google-chrome-stable";
+          "o" = "exec firefox";
+          "t" = "exec thunderbird";
+          "Shift+s" = "exec sh -c 'shutdown now'";
+          "Shift+h" = "exec sh -c 'i3-msg \"mode default\" && systemctl hibernate'";
 
-        # back to normal: Enter or Escape
-        "Return" = "mode default";
-        "Escape" = "mode default";
+          # back to normal: Enter or Escape
+          "Return" = "mode default";
+          "Escape" = "mode default";
+        };
+        resize = {
+          "Left" = "resize shrink width 10 px or 10 ppt";
+          "Down" = "resize grow height 10 px or 10 ppt";
+          "Up" = "resize shrink height 10 px or 10 ppt";
+          "Right" = "resize grow width 10 px or 10 ppt";
+
+          # back to normal: Enter or Escape
+          "Return" = "mode default";
+          "Escape" = "mode default";
+        };
       };
 
       # i3bar config
@@ -83,39 +130,39 @@ in {
       #    position = "top";
       #    statusCommand = "${pkgs.polybar}/bin/polybar top";
       #  }
-      ];
+    ];
 
-      startup = [
-        {
-          command = "systemctl --user restart polybar";
-          always = true;
-          notification = false;
-        }
-        {
-          command = "feh --bg-scale --randomize /home/coco/Wallpapers/";
-          always = true;
-          notification = false;
-        }
-      ];
-    };
+    startup = [
+      {
+        command = "systemctl --user restart polybar";
+        always = true;
+        notification = false;
+      }
+      {
+        command = "feh --bg-scale --randomize /home/coco/Wallpapers/";
+        always = true;
+        notification = false;
+      }
+    ];
   };
+};
 
-  services.polybar = {
-    enable = true;
-    package = pkgs.polybar.override {
-      i3Support = true;
-      alsaSupport = true;
-      iwSupport = true;
-      githubSupport = true;
-    };
-    config = {
-      "bar/top" = {
-        monitor = "eDP-1";
-        width = "100%";
-        height = "2%";
-	offset-y = "4%";
-        radius = 6;
-        fixed-center = true;
+services.polybar = {
+  enable = true;
+  package = pkgs.polybar.override {
+    i3Support = true;
+    alsaSupport = true;
+    iwSupport = true;
+    githubSupport = true;
+  };
+  config = {
+    "bar/top" = {
+      monitor = "eDP-1";
+      width = "100%";
+      height = "2%";
+      offset-y = "4%";
+      radius = 6;
+      fixed-center = true;
         # Just sticking them together in the center for now
         background = "${colors.background}";
         foreground = "${colors.foreground}";
@@ -379,7 +426,7 @@ in {
       };
     };
     script = ''
-    polybar top &
+      polybar top &
     '';
   };
 }
