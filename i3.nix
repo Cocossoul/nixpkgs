@@ -70,7 +70,7 @@ in {
         "${mod}+q" = "focus parent";
 
         # Resize mode
-        "${mod}+r" = "focus resize";
+        "${mod}+r" = "mode resize";
 
         # Shortcut mode
         "${mod}+Shift+d" = "mode shortcut";
