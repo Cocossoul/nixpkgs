@@ -48,6 +48,10 @@ in {
         # Screen brightness controls
         "XF86MonBrightnessUp" = "exec sh -c \"${pkgs.light}/bin/light -A 5\""; # increase screen brightness
         "XF86MonBrightnessDown" = "exec sh -c \"${pkgs.light}/bin/light -U 5\""; # decrease screen brightness
+        "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +10%";
+        "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -10%";
+        "XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
+        "XF86AudioMicMute" = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
       };
 
       # Set gaps
@@ -84,6 +88,11 @@ in {
       startup = [
         {
           command = "systemctl --user restart polybar";
+          always = true;
+          notification = false;
+        }
+        {
+          command = "feh --bg-scale --randomize /home/coco/Wallpapers/";
           always = true;
           notification = false;
         }
