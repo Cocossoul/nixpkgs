@@ -1,6 +1,7 @@
 { ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
   home.username = "coco";
   home.homeDirectory = "/home/coco";
   home.packages = [
@@ -30,6 +31,7 @@
     ./picom.nix
     ./zsh.nix
     ./vim.nix
+    ./vscode.nix
   ];
 
   home.stateVersion = "21.05";
