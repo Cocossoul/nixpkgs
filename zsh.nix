@@ -20,6 +20,7 @@
     initExtra = ''
       source "/home/coco/.config/zsh/plugins/powerlevel10k/share/zsh-powerlevel10k/powerlevel10k.zsh-theme"
       source "/home/coco/.config/zsh/.p10k.zsh"
+      eval $(ssh-agent) > /dev/null
       set -o vi
    '';
   };
