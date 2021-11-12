@@ -28,7 +28,7 @@ in {
         "${mod}+Shift+p" = "exec sh -c '${pkgs.maim}/bin/maim -s | xclip -selection clipboard -t image/png'";
 
         # i3lock with lockscreen
-        "${mod}+Shift+i" = "exec sh -c \"${pkgs.i3lock}/bin/i3lock --image=$HOME/Wallpapers/lockscreen.png\"";
+        "${mod}+Shift+i" = "exec sh -c \"${pkgs.i3lock}/bin/i3lock --image=$HOME/lockscreen.png\"";
 
         # Open terminal
         "${mod}+Return" = "exec i3-sensible-terminal";
