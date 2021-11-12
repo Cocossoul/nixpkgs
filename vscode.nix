@@ -10,6 +10,7 @@
         vscodevim.vim
 
         # Languages
+        bbenoist.Nix
         ms-vscode.cpptools
         ms-python.python
       ];
