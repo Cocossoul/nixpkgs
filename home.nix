@@ -24,6 +24,11 @@
     enable = true;
     userName = "Corentin PAPE";
     userEmail = "corentin.pape@epita.fr";
+    extraConfig = {
+      init = {
+        defaultBranch = "master";
+      };
+    };
   };
 
   imports = [
