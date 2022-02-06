@@ -2,7 +2,7 @@
 
 let 
   mod = "Mod4";
-  colors = {
+  colors = rec {
     background = "#222";
     background-alt = "#444";
     foreground = "#dfdfdf";
@@ -10,15 +10,18 @@ let
     primary = "#ffb52a";
     secondary = "#e60053";
     alert = "#bd2c40";
+    focused = primary;
   };
 in {
   xsession.windowManager.i3 = {
     enable = true;
+    extraConfig = ''for_window [class="^.*"] border pixel 0'';
     config = {
       modifier = mod;
 
       fonts = [ "monospace 12" "FontAwesome 12"];
       window.hideEdgeBorders = "both";
+      colors.focused = colors.focused;
 
       keybindings = lib.mkOptionDefault {
         # DMenu
